@@ -26,10 +26,9 @@ test('test', async () => {
 	await page.pause()
 
 
-	const phonenumber = await page.getByTestId('ocfEnterTextTextInput');
-	const text 		  = await page.getByText('There was unusual login activity on your account. To help keep your account safe');
+	const phonenumber = await page.getByTestId('ocfEnterTextTextInput').count();
 
-	if(phonenumber && text) {
+	if(phonenumber > 0 ) {
 		if(process.env.Twitter_phonenumber) {
 			await page.getByTestId('ocfEnterTextTextInput').click();
 			await page.getByTestId('ocfEnterTextTextInput').fill(process.env.Twitter_phonenumber);
