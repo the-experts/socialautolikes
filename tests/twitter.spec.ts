@@ -20,24 +20,14 @@ test('test', async () => {
 
 	await page.waitForTimeout(2000);
 
-	//Check mandatory if twitter verifies if its your account
-	
-
-	await page.pause()
-
-
-	const phonenumber = await page.getByTestId('ocfEnterTextTextInput').count();
-
-	if(phonenumber > 0 ) {
+	//Chech mandatory if twitter verifies if its your account
+	if(await page.getByTestId('ocfEnterTextTextInput').count() > 0){
+		await page.getByTestId('ocfEnterTextTextInput').click();
 		if(process.env.Twitter_phonenumber) {
-			await page.getByTestId('ocfEnterTextTextInput').click();
 			await page.getByTestId('ocfEnterTextTextInput').fill(process.env.Twitter_phonenumber);
-
 			await page.getByTestId('ocfEnterTextNextButton').click();
 		}
 	}
-
-	await page.pause()
 
 	await page.waitForTimeout(2000);
 
@@ -60,6 +50,7 @@ test('test', async () => {
 	await page.getByTestId('SearchBox_Search_Input').fill('MeetTheExperts');
 	await page.waitForTimeout(2000);
 	await page.getByRole('button', { name: /MeetTheExperts @_MeetTheExperts/ }).getByTestId('TypeaheadUser').click();
+
 	await page.waitForURL('https://twitter.com/_MeetTheExperts');
 
 	await page.waitForTimeout(2000);
