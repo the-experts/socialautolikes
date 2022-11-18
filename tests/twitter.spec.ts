@@ -49,7 +49,8 @@ test('test', async () => {
 	await page.getByTestId('SearchBox_Search_Input').click();
 	await page.getByTestId('SearchBox_Search_Input').fill('MeetTheExperts');
 	await page.waitForTimeout(2000);
-	await page.getByRole('button', { name: /MeetTheExperts @_MeetTheExperts/ }).getByTestId('TypeaheadUser').click();
+
+	await page.getByRole('option', { name: /MeetTheExperts @_MeetTheExperts/ }).getByTestId('TypeaheadUser').click();
 
 	await page.waitForURL('https://twitter.com/_MeetTheExperts');
 
