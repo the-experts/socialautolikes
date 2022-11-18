@@ -5,6 +5,7 @@ https://playwright.dev/
 
 Steps:
 - npm install
+- npm i playwright -g (om hem via crontab te kunnen executen)
 
 - Set credentials in .env
 
