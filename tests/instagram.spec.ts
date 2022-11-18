@@ -33,11 +33,10 @@ test('test', async () => {
 	for(let i = 0; i < await page.getByRole('link', { name: /Photo by @_meettheexperts_./ }).count(); i++){
 		//open post
 		await page.getByRole('link', { name: /Photo by @_meettheexperts_./ }).nth(i).click();
-		
-		//like post
-		const likeCount = await page.getByRole('button', { name: 'Like' }).count();
+		await page.waitForTimeout(500);
+		const likeCount = await page.getByRole('button', {name: 'Like'}).count();
 		if(likeCount > 0) {
-			await page.getByRole('button', { name: 'Like' }).click();	
+			await page.getByRole('button', { name: 'Like' }).click();
 		}
 		
 		//close post
