@@ -35,8 +35,9 @@ test('test', async () => {
 		await page.getByRole('link', { name: /Photo by @_meettheexperts_./ }).nth(i).click();
 		await page.waitForTimeout(500);
 		const likeCount = await page.getByRole('button', {name: 'Like'}).count();
-		if(likeCount > 0) {
-			await page.getByRole('button', { name: 'Like' }).click();
+		const unlikeCount = await page.getByRole('button', {name: 'Unlike'}).count();
+		if(likeCount > 0 && unlikeCount === 0) {
+			await page.getByRole('button', { name: 'Like' }).first().click();
 		}
 		
 		//close post
