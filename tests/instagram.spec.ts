@@ -5,7 +5,7 @@ test('test', async () => {
 	const browser = await chromium.launch();	
   	const page = await browser.newPage();
 
-	await page.goto('https://www.instagram.com/accounts/login');
+	await page.goto('https://www.instagram.com');
 
 	await page.getByRole('button', { name: 'Only allow essential cookies' }).click();
 
